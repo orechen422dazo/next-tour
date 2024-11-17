@@ -1,9 +1,12 @@
 import Link from "next/link";
 
 export default function Home() {
+  console.log('home page call')
+
   return (
     <div>
-      <Link href='/about' >about</Link>
+      <h1>Start Page</h1>
+      <Link href='/about' >go to about</Link>
     </div>
   );
 }
