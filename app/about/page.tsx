@@ -1,3 +1,4 @@
+import { CardComponent } from '@/component/Card'
 import React from 'react'
 
 const AboutPage = () => {
@@ -6,6 +7,7 @@ const AboutPage = () => {
   return (
     <div>
      <h1>AboutPage</h1>
+     <CardComponent />
     </div>
   )
 }

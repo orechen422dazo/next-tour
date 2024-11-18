@@ -15,6 +15,13 @@ const systemRoutes = ['/not-found']
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // 画像やその他の静的ファイルへのアクセスはスキップ
+  if (pathname.startsWith('/assets/') || 
+      pathname.startsWith('/_next/') || 
+      pathname.includes('.')) {
+    return NextResponse.next()
+  }
+
   // システムルートはチェックをスキップ
   if (systemRoutes.includes(pathname)) {
     return NextResponse.next()
@@ -40,8 +47,8 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // not-foundも含める必要があります
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // 静的ファイルと API ルートを除外
+    '/((?!api|_next/static|_next/image|assets|favicon.ico).*)',
   ]
 }
